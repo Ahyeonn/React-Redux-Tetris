@@ -99,7 +99,10 @@ code {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--tile-size));
   grid-gap: 0;
+  position: relative;
+  top: 25px;
   align-self: flex-start;
+  grid-area: c; /* Assign to grid area c */
 }
 
 /* Next Block */
@@ -108,6 +111,8 @@ code {
   grid-template-columns: repeat(4, var(--tile-size));
   grid-area: l; /* Grid area l left column */
   align-self: flex-end;
+  position: relative;
+  top: 25px;
 }
 
 /* Score Board */
@@ -125,7 +130,7 @@ code {
 .App {
   --col-side: calc(var(--tile-size) * 4);
   --col-center: calc(var(--tile-size) * 10);
-  --grid-height: calc(var(--tile-size) * 18);
+  --grid-height: calc(var(--tile-size) * 4);
 
   width: calc(var(--tile-size) * (4 + 1 + 10 + 1 + 4));
   margin: auto;
@@ -146,9 +151,56 @@ code {
 /* App-header */
 .App-header {
   grid-area: h;
+  position: absolute;
+  width: 400px;
 }
 
 /* score-board */
 .score-board {
   grid-area: r;
+  position: relative;
+  top: 25px;
+}
+
+/* controls */
+.controls {
+  grid-area: b;
+  display: flex;
+  /* background-color: red; */
+  position: relative;
+  top: 255%;
+  align-items: flex-end;
+  flex-direction: row;
+}
+
+/* Control Button */
+.control-button {
+  --size: calc(var(--tile-size) * 2.5);
+  width: var(--size);
+  font-size: 11px;
+  font-weight: ;
+  height: var(--size);
+  text-align: center;
+  display: block;
+  border-width: 5px;
+  border-top-color: var(--button-color-t);
+  border-left-color: var(--button-color-l);
+  border-right-color: var(--button-color-r);
+  border-bottom-color: var(--button-color-b);
+}
+
+/* Message Popup Styles */
+.message-popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--tile-size) * 10);
+  height: calc(var(--tile-size) * 10);
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.message-popup.hidden {
+  display: none;
 }
